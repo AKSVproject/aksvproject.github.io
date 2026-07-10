@@ -1,20 +1,18 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AKSV project | Voicebanks</title>
     <style>
         body {
-            background-color: #0f0d0b; /* Очень темный коричнево-черный */
+            background-color: #0f0d0b;
             color: #e4e1db;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             text-align: center;
             padding: 0;
             margin: 0;
         }
-        
-        /* Навигация (Вкладки) */
         nav {
             background-color: #1a1510;
             border-bottom: 1px solid #ff88002a;
@@ -36,6 +34,10 @@
             font-size: 1.2em;
             letter-spacing: 1px;
         }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
         .nav-links a {
             color: #c9c6c0;
             text-decoration: none;
@@ -47,14 +49,27 @@
         .nav-links a:hover {
             color: #ff8800;
         }
-
+        .lang-btn {
+            background-color: #2a2018;
+            color: #ff8800;
+            border: 1px solid #ff880055;
+            padding: 5px 10px;
+            margin-left: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lang-btn:hover {
+            background-color: #ff8800;
+            color: #0f0d0b;
+        }
         .container { 
             max-width: 750px; 
             margin: 0 auto; 
             padding: 40px 20px;
         }
-
-        /* Стилизация логотипа */
         .logo-container {
             margin-bottom: 20px;
         }
@@ -65,7 +80,6 @@
             border: 1px solid #ff880033;
             box-shadow: 0 4px 20px rgba(255, 136, 0, 0.05);
         }
-
         h1 { 
             color: #ffffff; 
             font-size: 2.5em; 
@@ -73,13 +87,11 @@
             margin-bottom: 5px; 
         }
         .subtitle { 
-            color: #ff8800; /* Оранжевый подзаголовок */
+            color: #ff8800;
             margin-bottom: 40px; 
             font-size: 1.1em; 
             font-weight: 500;
         }
-
-        /* Информационная секция о проекте */
         .info-section {
             background-color: #17120e;
             border: 1px solid #ff880022;
@@ -96,12 +108,70 @@
         .info-section p {
             color: #b5b1a9;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
-
-        /* Карточки релизов */
+        .author-badge {
+            background-color: #0d0a08;
+            border: 1px solid #ff880044;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            max-width: 450px;
+            margin: 20px auto 0 auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .author-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #ff8800;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+        .author-name {
+            color: #ffffff;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        .author-role {
+            color: #ff8800;
+            font-size: 0.95em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+        .author-bio {
+            color: #b5b1a9;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .author-socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #1a1510;
+            color: #e4e1db;
+            border: 1px solid #382b1d;
+            padding: 8px 16px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .social-btn:hover {
+            border-color: #ff8800;
+            color: #ff8800;
+            background-color: #211913;
+        }
         .card {
-            background-color: #17120e; /* Темно-оранжевый оттенок карточки */
+            background-color: #17120e;
             border: 1px solid #382b1d;
             border-radius: 8px;
             padding: 25px;
@@ -122,10 +192,8 @@
             padding-bottom: 8px; 
         }
         .info-line { margin: 8px 0; font-size: 0.95em; }
-        .info-line strong { color: #ff8800; } /* Оранжевые акценты */
+        .info-line strong { color: #ff8800; }
         .descr { color: #b5b1a9; margin-top: 12px; line-height: 1.5; }
-        
-        /* Оранжевая кнопка */
         .btn {
             display: inline-block;
             background-color: #ff8800;
@@ -147,65 +215,147 @@
 </head>
 <body>
 
-    <!-- Навигационная панель с вкладками -->
     <nav>
         <div class="nav-container">
             <div class="nav-logo">AKSV project</div>
             <div class="nav-links">
-                <a href="#">Главная</a>
-                <a href="#about">О проекте</a>
-                <a href="#voicebanks">Войсбанки</a>
+                <a href="#" id="nav-home">Home</a>
+                <a href="#about" id="nav-about">About</a>
+                <a href="#voicebanks" id="nav-vb">Voicebanks</a>
+                <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">RU</button>
             </div>
         </div>
     </nav>
 
     <div class="container">
         
-        <!-- Секция с Логотипом -->
         <div class="logo-container">
             <img src="logo.png" alt="AKSV Logo" class="logo-img">
-            
         </div>
 
         <h1>AKSV project</h1>
-        <div class="subtitle">Официальный сайт проекта AKSVproject</div>
+        <div class="subtitle" id="site-subtitle">Official website of the AKSVproject</div>
 
-        <!-- Раздел информации о проекте -->
         <div class="info-section" id="about">
-            <h3>О проекте</h3>
-            <p>Добро пожаловать в AKSV project! Мы занимаемся созданием, тонкой настройкой и дистрибуцией качественных кастомных голосовых банков для программ синтеза вокала. Наша цель -- предоставить удобные инструменты для музыкантов и контент-мейкеров, экспериментируя со звуком и расширяя языковые границы.</p>
+            <h3 id="about-title">About project</h3>
+            <p id="about-text">Welcome to AKSV project! We develop, fine-tune, and distribute high-quality custom voicebanks for vocal synthesis software. Our goal is to provide convenient tools for musicians and content creators by experimenting with sound and expanding language boundaries.</p>
+            
+            <div class="author-badge">
+                <img src="avatar.png" alt="Author Avatar" class="author-avatar">
+                <div class="author-name">121kirillmorti / kotiktortik_tech</div>
+                <div class="author-role" id="author-role">Creator & Voice Provider</div>
+                <div class="author-bio" id="author-bio">Creator, website designer, and voice provider for the UTAU voicebank Akito Shinto. I would be glad to see you join our project! If you want to collaborate or become a part of the team, feel free to contact me via Discord: 121kirillmorti.</div>
+                <div class="author-socials">
+                    <a href="YOUR_YOUTUBE_LINK_HERE" class="social-btn">YouTube</a>
+                    <a href="YOUR_TIKTOK_LINK_HERE" class="social-btn">TikTok</a>
+                </div>
+            </div>
         </div>
 
-        <h2 style="text-align: left; margin-top: 40px; color: #ffffff; font-size: 1.8em;" id="voicebanks">Доступные голосовые банки</h2>
+        <h2 style="text-align: left; margin-top: 40px; color: #ffffff; font-size: 1.8em;" id="voicebanks-heading">Available Voicebanks</h2>
 
-        <!-- КАРТОЧКА 1: VCV 1.0 BETA -->
         <div class="card">
             <h2>Akito Shinto VCV 1.0 BETA</h2>
-            <div class="info-line"><strong>Тип:</strong> UTAU VCV</div>
-            <div class="info-line"><strong>Размер:</strong> 15.3 МБ</div>
-            <p class="descr">Бета-версия голосового банка. Только VCV. Желательно использовать только для тестов.</p>
-            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/beta_VCV/akito.shinto.VCV.1.0.zip" class="btn">Скачать напрямую</a>
+            <div class="info-line"><strong id="card1-type-label">Type:</strong> <span>UTAU VCV</span></div>
+            <div class="info-line"><strong id="card1-size-label">Size:</strong> <span>15.3 MB</span></div>
+            <p class="descr" id="card1-descr">Beta version of the voicebank. VCV only. Recommended for testing purposes only.</p>
+            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/beta_VCV/akito.shinto.VCV.1.0.zip" class="btn lang-dl-btn">Download directly</a>
         </div>
 
-        <!-- КАРТОЧКА 2: VCV 2.0 -->
         <div class="card">
             <h2>Akito Shinto VCV 2.0</h2>
-            <div class="info-line"><strong>Тип:</strong> UTAU VCV (Улучшенный)</div>
-            <div class="info-line"><strong>Размер:</strong> 56.9 МБ</div>
-            <p class="descr">Обновленная версия банка. Более чистый, проработанная стабильность и улучшенная чёткость. Скоро получит не только ja версию но ru и eng.</p>
-            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_VCV/akito.shinto.VCV.2.0.zip" class="btn">Скачать напрямую</a>
+            <div class="info-line"><strong id="card2-type-label">Type:</strong> <span>UTAU VCV (Enhanced)</span></div>
+            <div class="info-line"><strong id="card2-size-label">Size:</strong> <span>56.9 MB</span></div>
+            <p class="descr" id="card2-descr">Updated version of the bank. Cleaner sound, improved stability, and better clarity. JA version now, RU and ENG versions are coming soon.</p>
+            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_VCV/akito.shinto.VCV.2.0.zip" class="btn lang-dl-btn">Download directly</a>
         </div>
 
-        <!-- КАРТОЧКА 3: DARK -->
         <div class="card">
             <h2>Akito Shinto DARK vcv 1.0</h2>
-            <div class="info-line"><strong>Тип:</strong> UTAU VCV / Тёмный тембр</div>
-            <div class="info-line"><strong>Размер:</strong> 72.3 МБ</div>
-            <p class="descr">Экспериментальный банк с искаженным звуком. Пока только в ja версии.</p>
-            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_dark_VCV/akito.shinto.DARK.zip" class="btn">Скачать напрямую</a>
+            <div class="info-line"><strong id="card3-type-label">Type:</strong> <span>UTAU VCV / Dark Tone</span></div>
+            <div class="info-line"><strong id="card3-size-label">Size:</strong> <span>72.3 MB</span></div>
+            <p class="descr" id="card3-descr">Experimental bank with distorted sound. Currently available in JA version only.</p>
+            <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_dark_VCV/akito.shinto.DARK.zip" class="btn lang-dl-btn">Download directly</a>
         </div>
     </div>
 
+    <script>
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                navHome: "Home",
+                navAbout: "About",
+                navVb: "Voicebanks",
+                toggleBtn: "RU",
+                subtitle: "Official website of the AKSVproject",
+                aboutTitle: "About project",
+                aboutText: "Welcome to AKSV project! We develop, fine-tune, and distribute high-quality custom voicebanks for vocal synthesis software. Our goal is to provide convenient tools for musicians and content creators by experimenting with sound and expanding language boundaries.",
+                authorRole: "Creator & Voice Provider",
+                authorBio: "Creator, website designer, and voice provider for the UTAU voicebank Akito Shinto. I would be glad to see you join our project! If you want to collaborate or become a part of the team, feel free to contact me via Discord: 121kirillmorti.",
+                vbHeading: "Available Voicebanks",
+                type: "Type:",
+                size: "Size:",
+                dlBtn: "Download directly",
+                card1Descr: "Beta version of the voicebank. VCV only. Recommended for testing purposes only.",
+                card2Descr: "Updated version of the bank. Cleaner sound, improved stability, and better clarity. JA version now, RU and ENG versions are coming soon.",
+                card3Descr: "Experimental bank with distorted sound. Currently available in JA version only."
+            },
+            ru: {
+                navHome: "Главная",
+                navAbout: "О проекте",
+                navVb: "Войсбанки",
+                toggleBtn: "EN",
+                subtitle: "Официальный сайт проекта AKSVproject",
+                aboutTitle: "О проекте",
+                aboutText: "Добро пожаловать в AKSV project! Мы занимаемся созданием, тонкой настройкой и дистрибуцией качественных кастомных голосовых банков для программ синтеза вокала. Наша цель — предоставить удобные инструменты для музыкантов и контент-мейкеров, экспериментируя со звуком и расширяя языковые границы.",
+                authorRole: "Креатор и Вокалист",
+                authorBio: "121kirillmorti / kotiktortik_tech - Креатор, создатель сайта и вокалист утау Akito Shinto. Буду рад вас увидеть и присоединиться к нашему проекту и если вы хотите к нему присоединиться пишите в мой discord: 121kirillmorti.",
+                vbHeading: "Доступные голосовые банки",
+                type: "Тип:",
+                size: "Размер:",
+                dlBtn: "Скачать напрямую",
+                card1Descr: "Бета-версия голосового банка. Только VCV. Желательно использовать только для тестов.",
+                card2Descr: "Обновленная версия банка. Более чистый, проработанная стабильность и улучшенная чёткость. Скоро получит не только ja версию но ru и eng.",
+                card3Descr: "Экспериментальный банк с искаженным звуком. Пока только в ja версии."
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'ru' : 'en';
+            const langData = translations[currentLang];
+
+            document.getElementById('nav-home').innerText = langData.navHome;
+            document.getElementById('nav-about').innerText = langData.navAbout;
+            document.getElementById('nav-vb').innerText = langData.navVb;
+            document.getElementById('lang-toggle').innerText = langData.toggleBtn;
+
+            document.getElementById('site-subtitle').innerText = langData.subtitle;
+            document.getElementById('about-title').innerText = langData.aboutTitle;
+            document.getElementById('about-text').innerText = langData.aboutText;
+            
+            document.getElementById('author-role').innerText = langData.authorRole;
+            document.getElementById('author-bio').innerText = langData.authorBio;
+            
+            document.getElementById('voicebanks-heading').innerText = langData.vbHeading;
+
+            document.getElementById('card1-type-label').innerText = langData.type;
+            document.getElementById('card1-size-label').innerText = langData.size;
+            document.getElementById('card2-type-label').innerText = langData.type;
+            document.getElementById('card2-size-label').innerText = langData.size;
+            document.getElementById('card3-type-label').innerText = langData.type;
+            document.getElementById('card3-size-label').innerText = langData.size;
+
+            document.getElementById('card1-descr').innerText = langData.card1Descr;
+            document.getElementById('card2-descr').innerText = langData.card2Descr;
+            document.getElementById('card3-descr').innerText = langData.card3Descr;
+
+            const buttons = document.querySelectorAll('.lang-dl-btn');
+            buttons.forEach(btn => btn.innerText = langData.dlBtn);
+            
+            document.documentElement.lang = currentLang;
+        }
+    </script>
 </body>
 </html>
 
