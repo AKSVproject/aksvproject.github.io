@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -6,64 +6,183 @@
     <title>AKSV project | Voicebanks</title>
     <style>
         body {
-            background-color: #0d1117;
-            color: #c9d1d9;
+            background-color: #0f0d0b; /* Очень темный коричнево-черный */
+            color: #e4e1db;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             text-align: center;
-            padding: 40px 20px;
+            padding: 0;
             margin: 0;
         }
-        h1 { color: #ffffff; font-size: 2.5em; letter-spacing: 1px; margin-bottom: 5px; }
-        .subtitle { color: #8b949e; margin-bottom: 40px; font-size: 1.1em; }
-        .container { max-width: 750px; margin: 0 auto; }
+        
+        /* Навигация (Вкладки) */
+        nav {
+            background-color: #1a1510;
+            border-bottom: 1px solid #ff88002a;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            color: #ff8800;
+            font-weight: 700;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #c9c6c0;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #ff8800;
+        }
+
+        .container { 
+            max-width: 750px; 
+            margin: 0 auto; 
+            padding: 40px 20px;
+        }
+
+        /* Стилизация логотипа */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        .logo-img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ff880033;
+            box-shadow: 0 4px 20px rgba(255, 136, 0, 0.05);
+        }
+
+        h1 { 
+            color: #ffffff; 
+            font-size: 2.5em; 
+            letter-spacing: 1px; 
+            margin-bottom: 5px; 
+        }
+        .subtitle { 
+            color: #ff8800; /* Оранжевый подзаголовок */
+            margin-bottom: 40px; 
+            font-size: 1.1em; 
+            font-weight: 500;
+        }
+
+        /* Информационная секция о проекте */
+        .info-section {
+            background-color: #17120e;
+            border: 1px solid #ff880022;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+        .info-section h3 {
+            margin-top: 0;
+            color: #ff8800;
+            font-size: 1.3em;
+        }
+        .info-section p {
+            color: #b5b1a9;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Карточки релизов */
         .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
+            background-color: #17120e; /* Темно-оранжевый оттенок карточки */
+            border: 1px solid #382b1d;
             border-radius: 8px;
             padding: 25px;
             margin: 25px 0;
             text-align: left;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
         .card:hover {
-            border-color: #8b949e;
+            border-color: #ff8800;
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 136, 0, 0.1);
         }
-        .card h2 { margin-top: 0; color: #ffffff; font-size: 1.6em; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+        .card h2 { 
+            margin-top: 0; 
+            color: #ffffff; 
+            font-size: 1.6em; 
+            border-bottom: 1px solid #382b1d; 
+            padding-bottom: 8px; 
+        }
         .info-line { margin: 8px 0; font-size: 0.95em; }
-        .info-line strong { color: #58a6ff; }
-        .descr { color: #8b949e; margin-top: 12px; line-height: 1.5; }
+        .info-line strong { color: #ff8800; } /* Оранжевые акценты */
+        .descr { color: #b5b1a9; margin-top: 12px; line-height: 1.5; }
+        
+        /* Оранжевая кнопка */
         .btn {
             display: inline-block;
-            background-color: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #f0f6fc1f;
+            background-color: #ff8800;
+            color: #0f0d0b;
             padding: 10px 20px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 6px;
             margin-top: 15px;
-            transition: 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
         .btn:hover {
-            background-color: #30363d;
-            border-color: #8b949e;
-            color: #ffffff;
+            background-color: #ffa333;
+        }
+        .btn:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
 <body>
 
+    <!-- Навигационная панель с вкладками -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">AKSV project</div>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#about">О проекте</a>
+                <a href="#voicebanks">Войсбанки</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
+        
+        <!-- Секция с Логотипом -->
+        <div class="logo-container">
+            <img src="https://github.com/AKSVproject/aksvproject.github.io/blob/main/302258558.png" alt="AKSV Logo" class="logo-img">
+        </div>
+
         <h1>AKSV project</h1>
         <div class="subtitle">Официальный сайт проекта AKSVproject</div>
+
+        <!-- Раздел информации о проекте -->
+        <div class="info-section" id="about">
+            <h3>О проекте</h3>
+            <p>Добро пожаловать в AKSV project! Мы занимаемся созданием, тонкой настройкой и дистрибуцией качественных кастомных голосовых банков для программ синтеза вокала. Наша цель -- предоставить удобные инструменты для музыкантов и контент-мейкеров, экспериментируя со звуком и расширяя языковые границы.</p>
+        </div>
+
+        <h2 style="text-align: left; margin-top: 40px; color: #ffffff; font-size: 1.8em;" id="voicebanks">Доступные голосовые банки</h2>
 
         <!-- КАРТОЧКА 1: VCV 1.0 BETA -->
         <div class="card">
             <h2>Akito Shinto VCV 1.0 BETA</h2>
             <div class="info-line"><strong>Тип:</strong> UTAU VCV</div>
             <div class="info-line"><strong>Размер:</strong> 15.3 МБ</div>
-            <p class="descr"> бета-версия голосового банка. Только VCV. желательно использовать только для тестов.</p>
+            <p class="descr">Бета-версия голосового банка. Только VCV. Желательно использовать только для тестов.</p>
             <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/beta_VCV/akito.shinto.VCV.1.0.zip" class="btn">Скачать напрямую</a>
         </div>
 
@@ -72,7 +191,7 @@
             <h2>Akito Shinto VCV 2.0</h2>
             <div class="info-line"><strong>Тип:</strong> UTAU VCV (Улучшенный)</div>
             <div class="info-line"><strong>Размер:</strong> 56.9 МБ</div>
-            <p class="descr">Обновленная версия банка. Более чистый, проработанная стабильность и улучшенная чёткость. скоро получить не только ja версию но ru и eng</p>
+            <p class="descr">Обновленная версия банка. Более чистый, проработанная стабильность и улучшенная чёткость. Скоро получит не только ja версию но ru и eng.</p>
             <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_VCV/akito.shinto.VCV.2.0.zip" class="btn">Скачать напрямую</a>
         </div>
 
@@ -81,10 +200,11 @@
             <h2>Akito Shinto DARK vcv 1.0</h2>
             <div class="info-line"><strong>Тип:</strong> UTAU VCV / Тёмный тембр</div>
             <div class="info-line"><strong>Размер:</strong> 72.3 МБ</div>
-            <p class="descr">Экспериментальный банк с искаженным звуком. пока только в ja версии.</p>
+            <p class="descr">Экспериментальный банк с искаженным звуком. Пока только в ja версии.</p>
             <a href="https://github.com/AKSVproject/aksvproject.github.io/releases/download/releases_dark_VCV/akito.shinto.DARK.zip" class="btn">Скачать напрямую</a>
         </div>
     </div>
 
 </body>
 </html>
+
